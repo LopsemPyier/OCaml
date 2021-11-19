@@ -1,0 +1,29 @@
+{
+  parserClass="com.github.lopsempyier.ocaml.parser.OCamlParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="OCaml"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.github.lopsempyier.ocaml.psi"
+  psiImplPackage="com.github.lopsempyier.ocaml.psi.impl"
+
+  elementTypeHolderClass="com.github.lopsempyier.ocaml.psi.OCamlTypes"
+  elementTypeClass="com.github.lopsempyier.ocaml.psi.OCamlElementType"
+  tokenTypeClass="com.github.lopsempyier.ocaml.psi.OCamlTokenType"
+
+  psiImplUtilClass="com.github.lopsempyier.ocaml.psi.impl.OCamlPsiImplUtil"
+}
+
+ocamlFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+property ::= (KEY? SEPARATOR VALUE?) | KEY {
+  pin=3
+  recoverWhile="recover_property"
+  mixin="com.github.lopsempyier.ocaml.psi.OCamlNamedElementImpl"
+  implements="com.github.lopsempyier.ocaml.psi.OCamlNamedElement"
+  methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+}
+private recover_property ::= !(KEY|SEPARATOR|COMMENT)
+

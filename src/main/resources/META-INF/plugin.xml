@@ -6,13 +6,65 @@
 
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.lopsempyier.ocaml.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.lopsempyier.ocaml.services.MyProjectService"/>
-    </extensions>
+    <depends>com.intellij.java</depends>
 
     <applicationListeners>
         <listener class="com.github.lopsempyier.ocaml.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.github.lopsempyier.ocaml.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.lopsempyier.ocaml.services.MyProjectService"/>
+
+
+        <fileType name="OCaml File" implementationClass="com.github.lopsempyier.ocaml.language.OCamlFileType"
+                  language="OCaml" extensions="ml"/>
+
+        <lang.parserDefinition language="OCaml"
+                               implementationClass="com.github.lopsempyier.ocaml.OCamlParserDefinition"/>
+
+        <lang.syntaxHighlighterFactory language="OCaml"
+                                       implementationClass="com.github.lopsempyier.ocaml.OCamlSyntaxHighlighterFactory"/>
+
+        <colorSettingsPage implementation="com.github.lopsempyier.ocaml.OCamlColorSettingsPage"/>
+
+        <annotator language="JAVA" implementationClass="com.github.lopsempyier.ocaml.OCamlAnnotator"/>
+
+        <codeInsight.lineMarkerProvider language="JAVA"
+                                        implementationClass="com.github.lopsempyier.ocaml.OCamlLineMakerProvider"/>
+
+        <completion.contributor language="OCaml"
+                                implementationClass="com.github.lopsempyier.ocaml.OCamlCompletionContributor"/>
+
+        <psi.referenceContributor implementation="com.github.lopsempyier.ocaml.OCamlReferenceContributor"/>
+
+        <lang.refactoringSupport language="OCaml"
+                                 implementationClass="com.github.lopsempyier.ocaml.OCamlRefactoringSupportProvider"/>
+
+        <lang.findUsagesProvider language="OCaml"
+                                 implementationClass="com.github.lopsempyier.ocaml.OCamlFindUsagesProvider"/>
+
+        <lang.foldingBuilder language="JAVA"
+                             implementationClass="com.github.lopsempyier.ocaml.OCamlFoldingBuilder"/>
+
+        <gotoSymbolContributor
+                implementation="com.github.lopsempyier.ocaml.OCamlChooseByNameContributor"/>
+
+        <lang.psiStructureViewFactory language="OCaml"
+                                      implementationClass="com.github.lopsempyier.ocaml.OCamlStructureViewFactory"/>
+
+        <lang.formatter language="OCaml"
+                        implementationClass="com.github.lopsempyier.ocaml.OCamlFormattingModelBuilder"/>
+
+        <codeStyleSettingsProvider implementation="com.github.lopsempyier.ocaml.OCamlCodeStyleSettingsProvider"/>
+
+        <langCodeStyleSettingsProvider
+                implementation="com.github.lopsempyier.ocaml.OCamlLanguageCodeStyleSettingsProvider"/>
+
+        <lang.commenter language="OCaml" implementationClass="com.github.lopsempyier.ocaml.OCamlCommenter"/>
+
+        <lang.documentationProvider language="OCaml"
+                                    implementationClass="com.github.lopsempyier.ocaml.OCamlDocumentationProvider"/>
+    </extensions>
 </idea-plugin>

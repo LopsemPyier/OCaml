@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.lopsempyier.ocaml.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.lopsempyier.ocaml.MyBundle
 
 class MyApplicationService {
 

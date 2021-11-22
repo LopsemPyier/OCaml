@@ -17,7 +17,7 @@ public interface OCamlProperty extends OCamlNamedElement {
     @Nullable
     String getName();
 
-    @Nullable
+    @NotNull
     PsiElement setName(@Nullable String newName);
 
     @Nullable

@@ -3,7 +3,7 @@ package com.github.lopsempyier.ocaml
 import com.intellij.testFramework.ParsingTestCase
 
 
-class OCamlParsingTest : ParsingTestCase("", "simple", OCamlParserDefinition()) {
+class OCamlParsingTest : ParsingTestCase("", "ml", OCamlParserDefinition()) {
     fun testParsingTestData() {
         doTest(true)
     }

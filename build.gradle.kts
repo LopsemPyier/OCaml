@@ -41,6 +41,7 @@ changelog {
     groups.set(emptyList())
 }
 
+
 // Configure Gradle Qodana Plugin - read more: https://github.com/JetBrains/gradle-qodana-plugin
 qodana {
     cachePath.set(projectDir.resolve(".qodana").canonicalPath)
@@ -63,10 +64,6 @@ tasks {
 
     wrapper {
         gradleVersion = properties("gradleVersion")
-    }
-
-    test {
-        systemProperty("idea.home.path", "/home/nathan/Documents/github/intellij-community/")
     }
 
     patchPluginXml {
@@ -118,6 +115,17 @@ tasks {
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
     }
+
+
+    buildSearchableOptions {
+        enabled = false
+    }
+}
+
+
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
 sourceSets["main"].java.srcDirs("src/main/gen")

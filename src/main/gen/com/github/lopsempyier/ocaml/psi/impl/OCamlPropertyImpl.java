@@ -46,7 +46,7 @@ public class OCamlPropertyImpl extends OCamlNamedElementImpl implements OCamlPro
     }
 
     @Override
-    @Nullable
+    @NotNull
     public PsiElement setName(@Nullable String newName) {
         return OCamlPsiImplUtil.setName(this, newName);
     }
